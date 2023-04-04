@@ -27,10 +27,8 @@ public class BankingAccount implements Serializable {
     private int accountNumber;
     @Column(name = "mount_account")
     private double mountAccount;
-    @OneToMany
-    @JoinColumn(name = "id_bankingaccount")
-    private List<Cards> cards;
-
-
+    @OneToOne
+    @JoinColumn(name = "id_cards", referencedColumnName = "id_cards")
+    private Cards cards;
 
 }
