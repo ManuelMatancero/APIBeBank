@@ -8,6 +8,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "logs")
@@ -20,7 +21,7 @@ public class Logs implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_logs")
     private Long idLogs;
-    private LocalDate date;
+    private LocalDateTime date;
     private String message;
     private String action;
 

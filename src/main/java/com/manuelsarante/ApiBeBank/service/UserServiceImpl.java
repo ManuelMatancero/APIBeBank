@@ -3,14 +3,12 @@ package com.manuelsarante.ApiBeBank.service;
 
 import com.manuelsarante.ApiBeBank.dao.UserDao;
 import com.manuelsarante.ApiBeBank.domain.User;
-import com.manuelsarante.ApiBeBank.dto.LoginDto;
-import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
+
 
 @Service
 public class UserServiceImpl implements UserService{

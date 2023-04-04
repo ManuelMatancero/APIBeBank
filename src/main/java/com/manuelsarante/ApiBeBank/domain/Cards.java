@@ -27,8 +27,8 @@ public class Cards implements Serializable {
     @Column(name = "expire_date")
     private LocalDate expireDate;
     private int cvv;
-    @ManyToOne
-    @JoinColumn(name = "id_bankingaccount", referencedColumnName = "id_bankingaccount")
-    private BankingAccount bankingAccount;
+    //@ManyToOne
+   // @JoinColumn(name = "id_bankingaccount", referencedColumnName = "id_bankingaccount")
+    //private BankingAccount bankingAccount;
 
 }

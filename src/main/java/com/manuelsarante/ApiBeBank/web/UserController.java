@@ -7,12 +7,9 @@ import com.manuelsarante.ApiBeBank.dto.LoginDto;
 import com.manuelsarante.ApiBeBank.service.LogsService;
 import com.manuelsarante.ApiBeBank.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -42,7 +39,7 @@ public class UserController {
                 Logs log = new Logs();
                 log.setUser(user);
                 log.setAction(action);
-                log.setDate(LocalDate.now());
+                log.setDate(LocalDateTime.now());
                 log.setMessage(message);
                 logsService.insert(log);
                 return ResponseEntity.ok(user);
@@ -51,18 +48,15 @@ public class UserController {
                 Logs log = new Logs();
                 log.setUser(user);
                 log.setAction(action);
-                log.setDate(LocalDate.now());
+                log.setDate(LocalDateTime.now());
                 log.setMessage(message);
                 logsService.insert(log);
-                HttpHeaders headers = new HttpHeaders();
-                headers.add("Custom-Header", "Custom-Value");
-                return new ResponseEntity<>(message, headers, HttpStatus.OK);
+                return ResponseEntity.notFound().build();
+
             }
         }else{
-            message = "User Not Found";
-            HttpHeaders headers = new HttpHeaders();
-            headers.add("Custom-Header", "Custom-Value");
-            return new ResponseEntity<>(message, headers, HttpStatus.OK);
+            return ResponseEntity.notFound().build();
+
         }
     }
 
