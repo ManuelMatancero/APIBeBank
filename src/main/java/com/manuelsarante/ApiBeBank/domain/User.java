@@ -29,6 +29,7 @@ public class User implements Serializable {
     private String password;
     private int role;
     private int status;
+    private String pin;
    // @OneToMany
     // @JoinColumn(name = "id_user", referencedColumnName = "id_user")
    // private List<Logs> logs;

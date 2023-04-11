@@ -4,6 +4,7 @@ package com.manuelsarante.ApiBeBank.web;
 import com.manuelsarante.ApiBeBank.domain.Logs;
 import com.manuelsarante.ApiBeBank.domain.User;
 import com.manuelsarante.ApiBeBank.dto.LoginDto;
+import com.manuelsarante.ApiBeBank.dto.LoginWithPinDto;
 import com.manuelsarante.ApiBeBank.service.LogsService;
 import com.manuelsarante.ApiBeBank.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,6 +58,49 @@ public class UserController {
         }else{
             return ResponseEntity.notFound().build();
 
+        }
+    }
+
+    @PostMapping("/pinlogin")
+    public ResponseEntity<?> loginWithPin(@RequestBody LoginWithPinDto loginWithPinDto){
+        String message;
+        String action = "Login PIN";
+        User user = userService.findByUser(loginWithPinDto.getUser());
+        if(user!=null){
+            if(loginWithPinDto.getPin().equals(user.getPin())){
+                if(loginWithPinDto.getPassword().equals(user.getPassword())){
+                    message = "Connection with PIN Successful";
+                    Logs log = new Logs();
+                    log.setUser(user);
+                    log.setAction(action);
+                    log.setDate(LocalDateTime.now());
+                    log.setMessage(message);
+                    logsService.insert(log);
+                    return ResponseEntity.ok(user);
+                }else{
+                    message = "Incorrect Password";
+                    Logs log = new Logs();
+                    log.setUser(user);
+                    log.setAction(action);
+                    log.setDate(LocalDateTime.now());
+                    log.setMessage(message);
+                    logsService.insert(log);
+                    return ResponseEntity.notFound().build();
+
+                }
+            }else{
+                message = "Incorrect PIN";
+                Logs log = new Logs();
+                log.setUser(user);
+                log.setAction(action);
+                log.setDate(LocalDateTime.now());
+                log.setMessage(message);
+                logsService.insert(log);
+                return ResponseEntity.notFound().build();
+            }
+
+        }else{
+            return ResponseEntity.notFound().build();
         }
     }
 
