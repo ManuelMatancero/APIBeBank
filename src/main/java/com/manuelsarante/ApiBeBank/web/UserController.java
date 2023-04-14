@@ -9,6 +9,7 @@ import com.manuelsarante.ApiBeBank.service.LogsService;
 import com.manuelsarante.ApiBeBank.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -31,11 +32,13 @@ public class UserController {
     }
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginDto loginDto){
+        //Object to decode password
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         String message;
         String action = "Login";
         User user = userService.findByUser(loginDto.getUser());
         if(user!=null){
-            if(user.getPassword().equals(loginDto.getPassword())){
+            if(encoder.matches(loginDto.getPassword(), user.getPassword())){
                 message = "Connection Successful";
                 Logs log = new Logs();
                 log.setUser(user);
@@ -63,12 +66,13 @@ public class UserController {
 
     @PostMapping("/pinlogin")
     public ResponseEntity<?> loginWithPin(@RequestBody LoginWithPinDto loginWithPinDto){
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         String message;
         String action = "Login PIN";
         User user = userService.findByUser(loginWithPinDto.getUser());
         if(user!=null){
             if(loginWithPinDto.getPin().equals(user.getPin())){
-                if(loginWithPinDto.getPassword().equals(user.getPassword())){
+                if(encoder.matches(loginWithPinDto.getPassword(), user.getPassword())){
                     message = "Connection with PIN Successful";
                     Logs log = new Logs();
                     log.setUser(user);
