@@ -8,7 +8,8 @@ To save a User object, you need to send a POST request to the /user/save endpoin
 
 Example:
 
-``` POST /user/save
+``` 
+POST /user/save
 
 {
   "id": null,
@@ -28,7 +29,8 @@ To login a user, you need to send a POST request to the /user/login endpoint wit
 
 Example:
 
-``` POST /user/login
+```
+ POST /user/login
 
 {
   "user": "john.doe",
@@ -42,7 +44,8 @@ To login a user with a PIN, you need to send a POST request to the /user/pinlogi
 
 Example:
 
-```POST /user/pinlogin
+```
+POST /user/pinlogin
 
 {
   "user": "john.doe",
@@ -58,7 +61,8 @@ To list all User objects, you need to send a GET request to the /user/list endpo
 
 Example:
 
-```GET /user/list
+```
+GET /user/list
 ```
 
 # Get a specific User object
@@ -67,7 +71,8 @@ To get a specific User object, you need to send a GET request to the /user/{id} 
 
 Example:
 
-```GET /user/1
+```
+GET /user/1
 ```
 
 # Delete a User object
@@ -76,7 +81,8 @@ To delete a User object, you need to send a DELETE request to the /user/delete/{
 
 Example:
 
-```DELETE /user/delete/1
+```
+DELETE /user/delete/1
 ```
 
 Note: In order to use the API, you need to have the necessary permissions and access to the API's endpoints. Additionally, you may need to provide authentication and authorization credentials depending on the API's configuration.
