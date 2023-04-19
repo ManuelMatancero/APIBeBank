@@ -66,12 +66,13 @@ public class UserController {
 
     @PostMapping("/pinlogin")
     public ResponseEntity<?> loginWithPin(@RequestBody LoginWithPinDto loginWithPinDto){
+        //Object to decode password
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         String message;
         String action = "Login PIN";
         User user = userService.findByUser(loginWithPinDto.getUser());
         if(user!=null){
-            if(loginWithPinDto.getPin().equals(user.getPin())){
+            if(encoder.matches(loginWithPinDto.getPin(), user.getPin())){
                 if(encoder.matches(loginWithPinDto.getPassword(), user.getPassword())){
                     message = "Connection with PIN Successful";
                     Logs log = new Logs();
