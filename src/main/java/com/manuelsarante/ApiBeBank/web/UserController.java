@@ -27,8 +27,29 @@ public class UserController {
 
     @PostMapping("/save")
     public ResponseEntity<?> saveUser(@RequestBody User user){
-        userService.insert(user);
-        return ResponseEntity.ok(user);
+        //Here i encoded the password and PIN
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        String encPassword = encoder.encode(user.getPassword());
+        String encPin = encoder.encode(user.getPin());
+        user.setPassword(encPassword);
+        user.setPin(encPin);
+        //Check if there is a same user created in the database
+        boolean isValid = true;
+        List<User> users = userService.getAll();
+        for(User username: users){
+            if (user.getUser().equals(username.getUser())) {
+                isValid = false;
+                break;
+            }
+        }
+        //Here if user is Valid the user will be crated
+        if(isValid){
+            //Save User
+            userService.insert(user);
+            return ResponseEntity.ok(user);
+        }else {
+            return ResponseEntity.ok("The user is already in use");
+        }
     }
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginDto loginDto){
