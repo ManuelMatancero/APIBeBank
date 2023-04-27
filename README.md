@@ -14,7 +14,7 @@ spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 spring.jpa.database-platform=org.hibernate.dialect.MySQLDialect
 ```
 # Recommendations
-In order to use the data already inserted in the database the password for the first two users is 123456 and for the third is 654321, also you can insert users and its related information, insert data in the following way the user->bankingAccount->card, only one card per account.
+In order to use the data already inserted in the database the password for the first two users is 123456 and for the third is 654321, also you can insert users and its related information, insert data in the following order the user->card->bankingAccount, only one card per account.
 
 
 # How to use UserController
