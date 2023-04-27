@@ -113,9 +113,13 @@ To save a banking account, send a POST request to the URL http://localhost:8080/
 ```
 {
 "accountNumber": "1234567890",
-"accountType": "Savings",
-"balance": 5000.0,
-"customerId": 1
+"mountAccount": 5000,
+"cards": {
+    "idCard": 5
+},
+"user":{
+    "idUser":2
+}
 }
 ```
 This will save the banking account in the database and return a 200 OK response with the saved banking account details.
@@ -138,9 +142,9 @@ To save a card, send a POST request to the URL http://localhost:8080/cards/save 
 ```
 {
 "cardNumber": "1234567890123456",
-"cardType": "Visa",
-"expiryDate": "2025-12-31",
-"customerId": 1
+"creationDate": "2023-12-31",
+"expireDate": "2025-12-31",
+"cvv": 123
 }
 ```
 This will save the card in the database and return a 200 OK response with the saved card details.

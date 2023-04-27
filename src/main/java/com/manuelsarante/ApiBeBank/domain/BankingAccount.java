@@ -2,6 +2,7 @@ package com.manuelsarante.ApiBeBank.domain;
 
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -20,9 +21,7 @@ public class BankingAccount implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_bankingaccount")
     private Long idAccount;
-    //@ManyToOne
-    //@JoinColumn(name = "id_user", referencedColumnName = "id_user")
-    //private User user;
+
     @Column(name = "account_number")
     private int accountNumber;
     @Column(name = "mount_account")
@@ -30,5 +29,9 @@ public class BankingAccount implements Serializable {
     @OneToOne
     @JoinColumn(name = "id_cards", referencedColumnName = "id_cards")
     private Cards cards;
+
+    @ManyToOne
+    @JoinColumn(name = "id_user", referencedColumnName = "id_user")
+    private User user;
 
 }
