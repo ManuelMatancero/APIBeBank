@@ -18,6 +18,8 @@ public class CardsController {
         cardsService.insert(cards);
         return ResponseEntity.ok(cards);
     }
+
+
     @GetMapping("/list")
     public ResponseEntity<?> listCardss() {
         List<Cards> cardss = cardsService.getAll();

@@ -21,8 +21,8 @@ public class BankingAccountServiceImpl implements BankingAccountService{
 
     @Override
     @Transactional(readOnly = true)
-    public BankingAccount findById(Long id) {
-        return bankingAccountDao.findById(id).orElse(null);
+    public BankingAccount findByIdAccount(Long id) {
+        return bankingAccountDao.findByIdAccount(id);
     }
     @Override
     @Transactional

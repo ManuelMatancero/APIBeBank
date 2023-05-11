@@ -26,11 +26,11 @@ public class BankingAccount implements Serializable {
     private int accountNumber;
     @Column(name = "mount_account")
     private double mountAccount;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_cards", referencedColumnName = "id_cards")
     private Cards cards;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "id_user", referencedColumnName = "id_user")
     private User user;
 
