@@ -23,7 +23,7 @@ public class BankingAccount implements Serializable {
     private Long idAccount;
 
     @Column(name = "account_number")
-    private int accountNumber;
+    private String accountNumber;
     @Column(name = "mount_account")
     private double mountAccount;
     @OneToOne(cascade = CascadeType.ALL)
