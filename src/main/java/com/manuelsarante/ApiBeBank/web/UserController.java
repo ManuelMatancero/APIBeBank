@@ -34,20 +34,32 @@ public class UserController {
         String encPin = encoder.encode(user.getPin());
         user.setPassword(encPassword);
         user.setPin(encPin);
-        //Check if there is a same user created in the database
-        boolean isValid = true;
+        //Check if there is a same user created in the database or an email
+        boolean userIsValid = true;
+        boolean emailIsValid = true;
         List<User> users = userService.getAll();
         for(User username: users){
             if (user.getUser().equals(username.getUser())) {
-                isValid = false;
+                userIsValid = false;
                 break;
             }
         }
-        //Here if user is Valid the user will be crated
-        if(isValid){
-            //Save User
-            userService.insert(user);
-            return ResponseEntity.ok(user);
+        for (User userEmail: users){
+            if(user.getEmail().equals(userEmail.getEmail())){
+                emailIsValid = false;
+                break;
+            }
+
+        }
+        //Here if user is Valid the user will be crated only if email is also valid
+        if(userIsValid){
+            //Save User if email is valid
+            if(emailIsValid){
+                userService.insert(user);
+                return ResponseEntity.ok(user);
+            }else{
+                return ResponseEntity.ok("The email is already in use");
+            }
         }else {
             return ResponseEntity.ok("The user is already in use");
         }
