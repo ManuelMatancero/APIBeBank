@@ -13,13 +13,6 @@ import java.util.List;
 public class CardsController {
     @Autowired
     CardsService cardsService;
-    @PostMapping("/save")
-    public ResponseEntity<?> saveCards(@RequestBody Cards cards){
-        cardsService.insert(cards);
-        return ResponseEntity.ok(cards);
-    }
-
-
     @GetMapping("/list")
     public ResponseEntity<?> listCardss() {
         List<Cards> cardss = cardsService.getAll();

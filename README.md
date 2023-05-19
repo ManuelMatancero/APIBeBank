@@ -14,8 +14,21 @@ spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 spring.jpa.database-platform=org.hibernate.dialect.MySQLDialect
 ```
 # Recommendations
-In order to use the data already inserted in the database the password for the first two users is 123456 and for the third is 654321, also you can insert users and its related information, insert data in the following order the user->card->bankingAccount, only one card per account.
+In order to use the data already inserted in the database the password for the first two users is 123456 and for the third is 654321, also you can insert users and its related information, insert data in the following order the user->bankingAccount.
 
+# Updates
+The API now is protected with Json Web Token, you can't use the endpoints without authenticate first, once you authenticate with a POST petition with http://localhost:80/jwt, in the body you have to put a user and a password from a user that is registered in the database, the response of that operation will be a 200 OK, and in its header will be the JsonWebToken which you are going to use to send it in the header of all your request in order to have successful responses. The JsonWebToken will have an expiration date that we can change whenever we want.
+
+This is what you have to send in the body of the request:
+```
+{
+ "user": "john.doe",
+ "password": "password123"
+}
+
+```
+# Remember this
+All the petitions you are going to do from now must have the valid JWT in its header in order to not get a 401.
 
 # How to use UserController
 
@@ -33,7 +46,7 @@ POST /user/save
 {
   "id": null,
   "name": "John",
-  "email": "john@mail.com"
+  "email": "john@mail.com",
   "user": "john.doe",
   "password": "password123",
   "role": 1,
@@ -109,20 +122,13 @@ DELETE /user/delete/1
 This a Java class that provides REST API endpoints for managing banking accounts. Here's how to use it with examples:
 
 # Saving a Banking Account
-To save a banking account, send a POST request to the URL http://localhost:8080/account/save with a JSON body containing the banking account details. Here's an example JSON body:
+To save a banking account, send a POST request to the URL http://localhost:8080/account/save/{id_of_the_user} with a JSON body containing the banking account mount. This request will create the account with the initial mount and its related card. Here's an example JSON body:
 ```
 {
-"accountNumber": "1234567890",
-"mountAccount": 5000,
-"cards": {
-    "idCard": 5
-},
-"user":{
-    "idUser":2
-}
+"mount": 3000,
 }
 ```
-This will save the banking account in the database and return a 200 OK response with the saved banking account details.
+This will save the banking account in the database and return a 200 OK response with the saved banking account details and the card related wit the user passed in the URL.
 
 # Listing All Banking Accounts
 To get a list of all banking accounts, send a GET request to the URL http://localhost:8080/account/list. This will return a 200 OK response with a JSON array of all banking account details.
@@ -135,19 +141,6 @@ To delete a banking account by ID, send a DELETE request to the URL http://local
 
 # How to use CardController 
 CardsController is a Java class that provides REST API endpoints for managing cards. Here's how to use it with examples:
-
-# Saving a Card
-To save a card, send a POST request to the URL http://localhost:8080/cards/save with a JSON body containing the card details. Here's an example JSON body:
-
-```
-{
-"cardNumber": "1234567890123456",
-"creationDate": "2023-12-31",
-"expireDate": "2025-12-31",
-"cvv": 123
-}
-```
-This will save the card in the database and return a 200 OK response with the saved card details.
 
 # Listing All Cards
 To get a list of all cards, send a GET request to the URL http://localhost:8080/cards/list. This will return a 200 OK response with a JSON array of all card details.

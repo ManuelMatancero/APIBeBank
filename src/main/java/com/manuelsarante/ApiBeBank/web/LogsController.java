@@ -15,11 +15,6 @@ public class LogsController {
 
     @Autowired
     LogsService logsService;
-    @PostMapping("/save")
-    public ResponseEntity<?> saveLogs(@RequestBody Logs logs){
-        logsService.insert(logs);
-        return ResponseEntity.ok(logs);
-    }
     @GetMapping("/list")
     public ResponseEntity<?> listLogs() {
         List<Logs> logss = logsService.getAll();
