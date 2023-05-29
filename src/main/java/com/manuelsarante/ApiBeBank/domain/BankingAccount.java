@@ -2,13 +2,11 @@ package com.manuelsarante.ApiBeBank.domain;
 
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.Data;
-
 import java.io.Serializable;
-import java.util.List;
+
 
 @Entity
 @Table(name = "bankingaccount")
