@@ -7,10 +7,7 @@ import com.manuelsarante.ApiBeBank.domain.User;
 import com.manuelsarante.ApiBeBank.dto.UpdateAmountAccountDto;
 import com.manuelsarante.ApiBeBank.service.BankingAccountService;
 import com.manuelsarante.ApiBeBank.service.CardsService;
-import com.manuelsarante.ApiBeBank.specialfunctions.AccountNumber;
-import com.manuelsarante.ApiBeBank.specialfunctions.CvvNumber;
-import com.manuelsarante.ApiBeBank.specialfunctions.DatePlus;
-import com.manuelsarante.ApiBeBank.specialfunctions.LuhnNumber;
+import com.manuelsarante.ApiBeBank.specialfunctions.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -106,6 +103,6 @@ public class BankingAccountController {
     public ResponseEntity<?> deletebankingAccount(@PathVariable Long id){
         BankingAccount bankingAccount = bankingAccountService.findByIdAccount(id);
         bankingAccountService.delete(bankingAccount);
-        return ResponseEntity.ok("BankingAccount Eliminado");
+        return ResponseEntity.ok(new Messages("Banking account deleted"));
     }
 }

@@ -6,6 +6,7 @@ import com.manuelsarante.ApiBeBank.dto.LoginDto;
 import com.manuelsarante.ApiBeBank.dto.LoginWithPinDto;
 import com.manuelsarante.ApiBeBank.service.LogsService;
 import com.manuelsarante.ApiBeBank.service.UserService;
+import com.manuelsarante.ApiBeBank.specialfunctions.Messages;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -54,12 +55,12 @@ public class UserController {
             //Save User if email is valid
             if(emailIsValid){
                 userService.insert(user);
-                return ResponseEntity.ok(user);
+                return ResponseEntity.ok(new Messages("User created successfully"));
             }else{
-                return ResponseEntity.ok("The email is already in use");
+                return ResponseEntity.ok(new Messages("The email is already in use"));
             }
         }else {
-            return ResponseEntity.ok("The user is already in use");
+            return ResponseEntity.ok(new Messages("The user is already in use"));
         }
     }
     @PostMapping("/login")
@@ -161,7 +162,7 @@ public class UserController {
     public ResponseEntity<?> deleteuser(@PathVariable Long id){
         User user = userService.findById(id);
         userService.delete(user);
-        return ResponseEntity.ok("User Eliminado");
+        return ResponseEntity.ok(new Messages("User deleted"));
     }
 
     @GetMapping("/jwt")

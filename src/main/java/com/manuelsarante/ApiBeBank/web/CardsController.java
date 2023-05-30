@@ -2,6 +2,7 @@ package com.manuelsarante.ApiBeBank.web;
 
 import com.manuelsarante.ApiBeBank.domain.Cards;
 import com.manuelsarante.ApiBeBank.service.CardsService;
+import com.manuelsarante.ApiBeBank.specialfunctions.Messages;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,6 +32,6 @@ public class CardsController {
     public ResponseEntity<?> deletecards(@PathVariable Long id){
         Cards cards = cardsService.findById(id);
         cardsService.delete(cards);
-        return ResponseEntity.ok("Cards Eliminado");
+        return ResponseEntity.ok(new Messages("Card deleted"));
     }
 }
