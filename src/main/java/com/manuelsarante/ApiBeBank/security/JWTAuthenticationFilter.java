@@ -12,7 +12,10 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import java.io.IOException;
 import java.util.Collections;
-
+/*
+ * Copyright (c) Manuel Antonio Sarante Sanchez 2023
+ * All rights reserved.
+ */
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     @Override

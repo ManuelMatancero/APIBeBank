@@ -10,7 +10,10 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
-
+/*
+ * Copyright (c) Manuel Antonio Sarante Sanchez 2023
+ * All rights reserved.
+ */
 @Component
 public class JWTAuthorizationFilter extends OncePerRequestFilter {
 

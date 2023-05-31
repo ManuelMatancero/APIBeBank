@@ -7,8 +7,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.Collections;
-
-
+/*
+ * Copyright (c) Manuel Antonio Sarante Sanchez 2023
+ * All rights reserved.
+ */
 @AllArgsConstructor
 public class UserDetailImpl implements UserDetails {
 

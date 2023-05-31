@@ -6,11 +6,11 @@ import com.manuelsarante.ApiBeBank.domain.User;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
-import java.util.Optional;
-
-
+/*
+ * Copyright (c) Manuel Antonio Sarante Sanchez 2023
+ * All rights reserved.
+ */
 @Service
 public class UserServiceImpl implements UserService{
     @Autowired

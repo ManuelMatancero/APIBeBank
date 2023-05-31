@@ -2,7 +2,10 @@ package com.manuelsarante.ApiBeBank.security;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.security.web.util.matcher.RequestMatcher;
-
+/*
+ * Copyright (c) Manuel Antonio Sarante Sanchez 2023
+ * All rights reserved.
+ */
 public class CustomEndpointRequestMatcher implements RequestMatcher {
     private final String endpoint;
 

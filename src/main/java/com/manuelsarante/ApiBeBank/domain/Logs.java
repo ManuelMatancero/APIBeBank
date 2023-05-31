@@ -8,6 +8,10 @@ import lombok.Data;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+/*
+ * Copyright (c) Manuel Antonio Sarante Sanchez 2023
+ * All rights reserved.
+ */
 @Entity
 @Table(name = "logs")
 @Data

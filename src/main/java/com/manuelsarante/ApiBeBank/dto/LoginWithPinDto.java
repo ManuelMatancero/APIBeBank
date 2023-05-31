@@ -1,5 +1,8 @@
 package com.manuelsarante.ApiBeBank.dto;
-
+/*
+ * Copyright (c) Manuel Antonio Sarante Sanchez 2023
+ * All rights reserved.
+ */
 public class LoginWithPinDto {
     private String user;
     private String password;

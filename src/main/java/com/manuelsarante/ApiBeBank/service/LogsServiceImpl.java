@@ -5,8 +5,11 @@ import com.manuelsarante.ApiBeBank.domain.Logs;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
+/*
+ * Copyright (c) Manuel Antonio Sarante Sanchez 2023
+ * All rights reserved.
+ */
 
 @Service
 public class LogsServiceImpl implements LogsService{

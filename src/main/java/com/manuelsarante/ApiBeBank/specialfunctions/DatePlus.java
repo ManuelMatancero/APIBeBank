@@ -1,9 +1,12 @@
 package com.manuelsarante.ApiBeBank.specialfunctions;
 
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
 
+
+/*
+ * Copyright (c) Manuel Antonio Sarante Sanchez 2023
+ * All rights reserved.
+ */
 public class DatePlus {
 
 

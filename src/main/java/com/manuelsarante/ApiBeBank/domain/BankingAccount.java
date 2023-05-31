@@ -7,6 +7,10 @@ import jakarta.persistence.*;
 import lombok.Data;
 import java.io.Serializable;
 
+/*
+ * Copyright (c) Manuel Antonio Sarante Sanchez 2023
+ * All rights reserved.
+ */
 
 @Entity
 @Table(name = "bankingaccount")

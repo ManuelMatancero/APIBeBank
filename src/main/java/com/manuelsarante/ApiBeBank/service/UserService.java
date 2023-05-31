@@ -1,12 +1,12 @@
 package com.manuelsarante.ApiBeBank.service;
 
 import com.manuelsarante.ApiBeBank.domain.User;
-import com.manuelsarante.ApiBeBank.dto.LoginDto;
-import org.apache.coyote.Response;
-import org.springframework.http.ResponseEntity;
-
 import java.util.List;
-import java.util.Optional;
+
+/*
+ * Copyright (c) Manuel Antonio Sarante Sanchez 2023
+ * All rights reserved.
+ */
 
 public interface UserService {
 

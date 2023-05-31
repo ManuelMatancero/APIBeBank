@@ -2,6 +2,10 @@ package com.manuelsarante.ApiBeBank.specialfunctions;
 
 import java.util.Random;
 
+/*
+ * Copyright (c) Manuel Antonio Sarante Sanchez 2023
+ * All rights reserved.
+ */
 public class LuhnNumber {
 
     // Generate a 16 digits number validated by Luhn

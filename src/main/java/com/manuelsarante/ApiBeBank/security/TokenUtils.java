@@ -10,7 +10,10 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-
+/*
+ * Copyright (c) Manuel Antonio Sarante Sanchez 2023
+ * All rights reserved.
+ */
 public class TokenUtils {
 
     private final static String ACCSESS_TOKEN_SECRET="2134h12h34h123h42b4hb24hv12g4c53k16v5";

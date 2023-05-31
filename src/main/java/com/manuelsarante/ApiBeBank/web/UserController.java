@@ -14,7 +14,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 import java.util.List;
-
+/*
+ * Copyright (c) Manuel Antonio Sarante Sanchez 2023
+ * All rights reserved.
+ */
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -142,6 +145,30 @@ public class UserController {
         }
     }
 
+    @PutMapping("/update/{id}")
+    public ResponseEntity<?> updateUser(@PathVariable Long id, @RequestBody User user){
+        //Variable to encode Password
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        User userFound = userService.findById(id);
+        if (userFound != null){
+            userFound.setName(user.getName());
+            userFound.setEmail(user.getEmail());
+            userFound.setUser(user.getUser());
+            //Here i encode the password
+            String password = passwordEncoder.encode(user.getPassword());
+            userFound.setPassword(password);
+            userFound.setRole(user.getRole());
+            userFound.setStatus(user.getStatus());
+            //here i encode the pin
+            String pin = passwordEncoder.encode(user.getPin());
+            userFound.setPin(pin);
+            userService.update(userFound);
+            return ResponseEntity.ok(userFound);
+        }else{
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @GetMapping("/list")
     public ResponseEntity<?> listUsers() {
         List<User> users = userService.getAll();
@@ -161,11 +188,15 @@ public class UserController {
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deleteuser(@PathVariable Long id){
         User user = userService.findById(id);
-        userService.delete(user);
-        return ResponseEntity.ok(new Messages("User deleted"));
+        if(user!=null){
+            userService.delete(user);
+            return ResponseEntity.ok(new Messages("User deleted"));
+        }else{
+           return ResponseEntity.notFound().build();
+        }
     }
 
-    @GetMapping("/jwt")
+    @GetMapping("/user/jwt")
     public String myEndpoint(HttpServletRequest request) {
         String authorizationHeader = request.getHeader("Authorization");
 
