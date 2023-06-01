@@ -7,7 +7,6 @@ import com.manuelsarante.ApiBeBank.dto.LoginWithPinDto;
 import com.manuelsarante.ApiBeBank.service.LogsService;
 import com.manuelsarante.ApiBeBank.service.UserService;
 import com.manuelsarante.ApiBeBank.specialfunctions.Messages;
-import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -195,19 +194,4 @@ public class UserController {
            return ResponseEntity.notFound().build();
         }
     }
-
-    @GetMapping("/user/jwt")
-    public String myEndpoint(HttpServletRequest request) {
-        String authorizationHeader = request.getHeader("Authorization");
-
-        if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
-            String jwtToken = authorizationHeader.substring(7); // Remove "Bearer " prefix
-
-            return "JWT token: " + jwtToken;
-        } else {
-            // Handle the absence of the JWT token in the header
-            return "JWT token not found";
-        }
-    }
-
 }
