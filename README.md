@@ -2,6 +2,9 @@
 
 This is the link to download the backup of the database: https://drive.google.com/file/d/1CJyD88lj7pG1l45wPOn2xlJ5UcPG4gpe/view?usp=sharing
 
+# Jar of the API
+In this link you will find the JAR of the API: https://drive.google.com/drive/folders/1c-mVOTDEyDvwkZMZNaLhMTSBfAphhWoH?usp=sharing
+
 To deploy the API, first you have to install the Java JDK 17 and MySql, and then import the database using your prefered unified visual tool for MySql databases, open the API code in your preferred IDE, clean and build the project and change the connection parameters in the application.properties file with yours, finally run it from the class ApiBeBankApplication.
 
 # Example of the application.properties file
