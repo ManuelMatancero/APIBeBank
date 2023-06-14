@@ -4,6 +4,7 @@ import com.manuelsarante.ApiBeBank.domain.Logs;
 import com.manuelsarante.ApiBeBank.domain.User;
 import com.manuelsarante.ApiBeBank.dto.LoginDto;
 import com.manuelsarante.ApiBeBank.dto.LoginWithPinDto;
+import com.manuelsarante.ApiBeBank.dto.UpdateStatus;
 import com.manuelsarante.ApiBeBank.service.LogsService;
 import com.manuelsarante.ApiBeBank.service.UserService;
 import com.manuelsarante.ApiBeBank.specialfunctions.Messages;
@@ -165,6 +166,18 @@ public class UserController {
             return ResponseEntity.ok(userFound);
         }else{
             return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PutMapping("/updatestatus/{id}")
+    public ResponseEntity<?> updateStatus(@PathVariable Long id, @RequestBody UpdateStatus statusObject){
+        User userToUpdate = userService.findById(id);
+        if(userToUpdate!=null){
+            userToUpdate.setStatus(statusObject.getStatus());
+            userService.update(userToUpdate);
+            return ResponseEntity.ok(userToUpdate);
+        }else{
+            return ResponseEntity.ok(new Messages("User id not found"));
         }
     }
 

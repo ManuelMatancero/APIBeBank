@@ -15,3 +15,6 @@
 - Now you can update the mount of a banking account with the following endpoint ```/updateMount/{id}``` and sending in the body the following JSON with the new mount, ```{"mount":2000}```.
 - Some bugs where fixed.
 - The link to download the JAR file is in the README.md file.
+
+### [2.0.1] - 2023-06-14
+- Now you can update the status by the following endpoint ```/updatestatus/{id-of-user}``` and in the body ```{"status": 2}``` (number of the status).
