@@ -42,4 +42,9 @@ public class BankingAccountServiceImpl implements BankingAccountService{
     public void delete(BankingAccount bankingAccount) {
         bankingAccountDao.delete(bankingAccount);
     }
+
+    @Override
+    public BankingAccount findByAccountNumber(String accountNumber) {
+        return bankingAccountDao.findByAccountNumber(accountNumber);
+    }
 }

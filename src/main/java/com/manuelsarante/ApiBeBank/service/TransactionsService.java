@@ -1,5 +1,6 @@
 package com.manuelsarante.ApiBeBank.service;
 
+import com.manuelsarante.ApiBeBank.domain.BankingAccount;
 import com.manuelsarante.ApiBeBank.domain.Transactions;
 
 import java.util.List;
@@ -11,5 +12,6 @@ public interface TransactionsService {
     void insert(Transactions transactions);
     void delete(Transactions transactions);
     void update(Transactions transactions);
+
 
 }

@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.Data;
 import java.io.Serializable;
+import java.util.List;
 
 /*
  * Copyright (c) Manuel Antonio Sarante Sanchez 2023
@@ -35,5 +36,9 @@ public class BankingAccount implements Serializable {
     @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "id_user", referencedColumnName = "id_user")
     private User user;
+
+    @OneToMany
+    @JoinColumn(name = "id_bankingaccount", referencedColumnName = "id_bankingaccount")
+    private List<Transactions> transactions;
 
 }

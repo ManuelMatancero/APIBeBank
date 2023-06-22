@@ -10,5 +10,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface BankingAccountDao extends JpaRepository<BankingAccount, Long> {
 
     BankingAccount findByIdAccount(Long id);
-
+    BankingAccount findByAccountNumber(String accountNumber);
 }

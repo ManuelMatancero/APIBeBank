@@ -14,4 +14,5 @@ public interface BankingAccountService {
     public void insert(BankingAccount bankingAccount);
     public void update(BankingAccount bankingAccount);
     public void delete(BankingAccount bankingAccount);
+    BankingAccount findByAccountNumber(String accountNumber);
 }
