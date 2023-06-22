@@ -18,3 +18,53 @@
 
 ### [2.0.1] - 2023-06-14
 - Now you can update the status by the following endpoint ```/updatestatus/{id-of-user}``` and in the body ```{"status": 2}``` (number of the status).
+
+### [2.0.2] - 2023-06-22
+- Now the API supports transactions between accounts inside of this environment, here I explain what I have added in this update:
+- The base URL for accessing the API is: http://your-domain.com/transactions
+- The API has a new endpoit ```transactions/transfer``` with this endpoint and the following information in the body you will be able to make transactions between accounts:
+- #### Body  
+```
+{
+  "outAccount": "1234567890",
+  "amount": 100.0,
+  "actualAccount": "0987654321"
+} 
+```
+In this Json ```outAccount``` represents the account you will send the money to, ```amount``` represents the amount of money you will send and ```actualAccount``` represents the account you will send the money from.
+
+- ### Error handling
+In this new update if you try to make a transfer to an account that is not in the database you will get a 404, and in case you try to send an amount of money that exceeds the amount of money of the actual account you are gonna send the money from you will get a 200 telling you that you do not have enough money in that account.
+
+- This is the actual structure of the table transactions in the database
+
+## Database Table Representation
+The following table represents the `transactions` table in the database:
+
+| id_transaction | transaction_type | amount | date                | description                           | out_account | id_bankingaccount |
+|----------------|------------------|--------|---------------------|---------------------------------------|--------------|-------------------|
+| 1              | TRANSFERRED      | 100.0  | 2023-06-22 10:00:00 | Transferred 100.0 to John Doe         | 1234567890   | 1                 |
+| 2              | RECEIVED         | 100.0  | 2023-06-22 10:01:00 | Received 100.0 from Jane Doe          | 0987654321   | 2                 |
+
+- In case you get a successful response and the transaction was made, you will get a 200 in the response with the following body 
+```agsl
+{
+  "idTransaction": 1,
+  "transactionType": "TRANSFERRED",
+  "amount": 100.0,
+  "date": "2023-06-22T10:00:00",
+  "description": "Transferred 100.0 to John Doe",
+  "outAccount": "1234567890",
+  "bankingAccount": {
+    "id_bankingaccount": 1,
+    "accountNumber": "0987654321",
+    "mountAccount": 900.0,
+    "user": {
+      "id_user": 1
+    }
+  }
+}
+
+
+```
+
