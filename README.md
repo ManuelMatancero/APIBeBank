@@ -1,6 +1,6 @@
 # How to use and deploy
 
-This is the link to download the backup of the database: https://drive.google.com/file/d/1CJyD88lj7pG1l45wPOn2xlJ5UcPG4gpe/view?usp=sharing
+This is the link to download the backup of the database: https://drive.google.com/drive/folders/1C4bSwEe7K1HMh9LessnmjUmoLLvXV_MS?usp=sharing
 
 # Jar of the API
 In this link you will find the JAR of the API: https://drive.google.com/drive/folders/1c-mVOTDEyDvwkZMZNaLhMTSBfAphhWoH?usp=sharing
